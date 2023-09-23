@@ -1,4 +1,4 @@
-import 'package:badges/badges.dart';
+import 'package:badges/badges.dart' as badge;
 import 'package:ecomm_app/app_theme.dart';
 import 'package:ecomm_app/widgets/button.dart';
 import 'package:flutter/material.dart';
@@ -12,7 +12,8 @@ import 'models/product.dart';
 import 'widgets/count_controller.dart';
 
 class ProductDetailWidget extends StatefulWidget {
-  const ProductDetailWidget({Key? key, required this.product}) : super(key: key);
+  const ProductDetailWidget({Key? key, required this.product})
+      : super(key: key);
 
   final Product product;
 
@@ -20,7 +21,8 @@ class ProductDetailWidget extends StatefulWidget {
   _ProductDetailWidgetState createState() => _ProductDetailWidgetState();
 }
 
-class _ProductDetailWidgetState extends State<ProductDetailWidget> with TickerProviderStateMixin {
+class _ProductDetailWidgetState extends State<ProductDetailWidget>
+    with TickerProviderStateMixin {
   final scaffoldKey = GlobalKey<ScaffoldState>();
   int? countControllerValue;
 
@@ -60,7 +62,7 @@ class _ProductDetailWidgetState extends State<ProductDetailWidget> with TickerPr
             List<Product> cartItem = cartState.cartItem;
             return Padding(
               padding: EdgeInsetsDirectional.fromSTEB(0, 8, 24, 0),
-              child: Badge(
+              child: badge.Badge(
                 badgeContent: Text(
                   '${cartItem.length}',
                   style: AppTheme.of(context).bodyText1.override(
@@ -69,12 +71,12 @@ class _ProductDetailWidgetState extends State<ProductDetailWidget> with TickerPr
                       ),
                 ),
                 showBadge: true,
-                shape: BadgeShape.circle,
+                shape: badge.BadgeShape.circle,
                 badgeColor: AppTheme.of(context).primaryColor,
                 elevation: 4,
                 padding: EdgeInsetsDirectional.fromSTEB(8, 8, 8, 8),
-                position: BadgePosition.topEnd(),
-                animationType: BadgeAnimationType.scale,
+                position: badge.BadgePosition.topEnd(),
+                animationType: badge.BadgeAnimationType.scale,
                 toAnimate: true,
                 child: IconButton(
                   icon: Icon(
@@ -191,12 +193,16 @@ class _ProductDetailWidgetState extends State<ProductDetailWidget> with TickerPr
                       child: CountController(
                         decrementIconBuilder: (enabled) => Icon(
                           Icons.remove_rounded,
-                          color: enabled ? AppTheme.of(context).secondaryText : AppTheme.of(context).secondaryText,
+                          color: enabled
+                              ? AppTheme.of(context).secondaryText
+                              : AppTheme.of(context).secondaryText,
                           size: 16,
                         ),
                         incrementIconBuilder: (enabled) => Icon(
                           Icons.add_rounded,
-                          color: enabled ? AppTheme.of(context).primaryColor : AppTheme.of(context).secondaryText,
+                          color: enabled
+                              ? AppTheme.of(context).primaryColor
+                              : AppTheme.of(context).secondaryText,
                           size: 16,
                         ),
                         countBuilder: (count) => Text(
@@ -204,7 +210,8 @@ class _ProductDetailWidgetState extends State<ProductDetailWidget> with TickerPr
                           style: AppTheme.of(context).subtitle1,
                         ),
                         count: countControllerValue ??= 1,
-                        updateCount: (count) => setState(() => countControllerValue = count),
+                        updateCount: (count) =>
+                            setState(() => countControllerValue = count),
                         stepSize: 1,
                         minimum: 1,
                       ),

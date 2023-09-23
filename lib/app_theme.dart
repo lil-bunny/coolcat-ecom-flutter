@@ -1,7 +1,6 @@
 // ignore_for_file: overridden_fields, annotate_overrides
 
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 abstract class AppTheme {
   static AppTheme of(BuildContext context) {
@@ -87,54 +86,19 @@ class ThemeTypography extends Typography {
   final AppTheme theme;
 
   String get title1Family => 'Poppins';
-  TextStyle get title1 => GoogleFonts.getFont(
-        'Poppins',
-        color: theme.primaryText,
-        fontWeight: FontWeight.w600,
-        fontSize: 24,
-      );
+  TextStyle get title1 => TextStyle();
   String get title2Family => 'Poppins';
-  TextStyle get title2 => GoogleFonts.getFont(
-        'Poppins',
-        color: theme.secondaryText,
-        fontWeight: FontWeight.w600,
-        fontSize: 22,
-      );
+  TextStyle get title2 => TextStyle();
   String get title3Family => 'Poppins';
-  TextStyle get title3 => GoogleFonts.getFont(
-        'Poppins',
-        color: theme.primaryText,
-        fontWeight: FontWeight.w600,
-        fontSize: 20,
-      );
+  TextStyle get title3 => TextStyle();
   String get subtitle1Family => 'Poppins';
-  TextStyle get subtitle1 => GoogleFonts.getFont(
-        'Poppins',
-        color: theme.primaryText,
-        fontWeight: FontWeight.w600,
-        fontSize: 18,
-      );
+  TextStyle get subtitle1 => TextStyle();
   String get subtitle2Family => 'Poppins';
-  TextStyle get subtitle2 => GoogleFonts.getFont(
-        'Poppins',
-        color: theme.secondaryText,
-        fontWeight: FontWeight.w600,
-        fontSize: 16,
-      );
+  TextStyle get subtitle2 => TextStyle();
   String get bodyText1Family => 'Poppins';
-  TextStyle get bodyText1 => GoogleFonts.getFont(
-        'Poppins',
-        color: theme.primaryText,
-        fontWeight: FontWeight.w600,
-        fontSize: 14,
-      );
+  TextStyle get bodyText1 => TextStyle();
   String get bodyText2Family => 'Poppins';
-  TextStyle get bodyText2 => GoogleFonts.getFont(
-        'Poppins',
-        color: theme.secondaryText,
-        fontWeight: FontWeight.w600,
-        fontSize: 14,
-      );
+  TextStyle get bodyText2 => TextStyle();
 }
 
 extension TextStyleHelper on TextStyle {
@@ -149,25 +113,14 @@ extension TextStyleHelper on TextStyle {
     TextDecoration? decoration,
     double? lineHeight,
   }) =>
-      useGoogleFonts
-          ? GoogleFonts.getFont(
-              fontFamily!,
-              color: color ?? this.color,
-              fontSize: fontSize ?? this.fontSize,
-              letterSpacing: letterSpacing ?? this.letterSpacing,
-              fontWeight: fontWeight ?? this.fontWeight,
-              fontStyle: fontStyle ?? this.fontStyle,
-              decoration: decoration,
-              height: lineHeight,
-            )
-          : copyWith(
-              fontFamily: fontFamily,
-              color: color,
-              fontSize: fontSize,
-              letterSpacing: letterSpacing,
-              fontWeight: fontWeight,
-              fontStyle: fontStyle,
-              decoration: decoration,
-              height: lineHeight,
-            );
+      copyWith(
+        fontFamily: fontFamily,
+        color: color,
+        fontSize: fontSize,
+        letterSpacing: letterSpacing,
+        fontWeight: fontWeight,
+        fontStyle: fontStyle,
+        decoration: decoration,
+        height: lineHeight,
+      );
 }
